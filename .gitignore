@@ -1,2 +1,5 @@
- env.
- utils/
+env.*
+utils/
+/vendor/
+composer.lock
+/public/image/*.*

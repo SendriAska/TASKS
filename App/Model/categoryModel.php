@@ -1,7 +1,4 @@
 <?php
-//importer le fichier bdd.php
-include "../utils/bdd.php";
-
 //ajouter une category (objet de connexion et le contenu de la catégorie)
 function addCategory(string $name)
 {
@@ -40,15 +37,15 @@ function getCategoryById(int $id)
     }
 }
 
-function addCategoryNosecure(string $name)
-{
-    try {
-        $request = "SELECT * FROM category where id_category = $name";
-        $req = connectBDD()->query($request);
-    } catch (Exception $e) {
-        echo $e->getMessage();
-    }
-}
+// function addCategoryNosecure(string $name)
+// {
+//     try {
+//         $request = "SELECT * FROM category where id_category = $name";
+//         $req = connectBDD()->query($request);
+//     } catch (Exception $e) {
+//         echo $e->getMessage();
+//     }
+// }
 
 // Exo 1
 function getAllCategory():array
@@ -66,10 +63,6 @@ function getAllCategory():array
     }
 }
 
-echo "<pre>";
-print_r(getAllCategory());
-echo"</pre>";
-
 // Exo 2
 function updateCategory(int $id, string $newName) {
     try {
@@ -83,8 +76,6 @@ function updateCategory(int $id, string $newName) {
         $e->getMessage();
     }
 }
-
-print_r(updateCategory(1,"huh"));
 
 // Exo 3
 function deleteCategory(int $id) {
