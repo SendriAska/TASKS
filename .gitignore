@@ -1,5 +1,5 @@
-env.*
 utils/
 /vendor/
 composer.lock
 /public/image/*.*
+env.php
