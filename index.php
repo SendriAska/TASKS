@@ -8,6 +8,9 @@ $url = parse_url($_SERVER['REQUEST_URI']);
 //test si l'url posséde une route sinon on renvoi à la racine
 $path = $url['path'] ??  '/';
 
+//ouverture de la session
+session_start();
+
 // import des classes router
 use App\Controller\HomeController;
 use App\Controller\CategoryController;
@@ -39,6 +42,7 @@ switch (substr($path, strlen(BASE_URL))) {
         $categoryController->removeCategory();
         break;
     case "/user/connexion":
+        $userController->login();
         break;
     default : 
         echo "404";

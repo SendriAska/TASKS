@@ -113,4 +113,21 @@ class User
             return false;
         }
     }
+
+    public function findUserByEmail() {
+        try {
+            $email = $this->email;
+            $request = "SELECT * FROM users WHERE email = ?";
+            $req = $this->bdd->prepare($request);
+            $req->bindParam(1, $email, \PDO::PARAM_STR);
+            $req->execute();
+            $data = $req->fetch(\PDO::FETCH_ASSOC);
+            if ($data) {
+                return $data;
+            }
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage());
+        }
+        return null;
+    }
 }
