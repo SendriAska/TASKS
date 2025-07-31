@@ -55,15 +55,10 @@ class CategoryController
         if (isset($_POST['delete'])) {
             //nettoyer les infos
             $id = Utilitaire::sanitize($_POST['id']);
-            //Instancier la catégorie
-            $category = new Category();
-            $category->setidCategory($id);
             //Suppression de la categorie
-            if ($category->deleteCategory()) {
-                header("Location: /TASKS/category/all");
-            } else {
-                $message = "Erreur lors de la suppression de la catégorie.";
-            }
+            $this->category->deleteCategory($id);
+            header("Location: /TASKS/category/all");
         }
+        header('Location: /TASKS/category/all');
     }
 }

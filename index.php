@@ -11,28 +11,34 @@ $path = $url['path'] ??  '/';
 // import des classes router
 use App\Controller\HomeController;
 use App\Controller\CategoryController;
+use App\Controller\UserController;
 
 // instanciation du contrôleur
 $homeController = new HomeController();
 $categoryController = new CategoryController();
-
+$userController = new UserController();
 
 // Test route
-switch ($path) {
-    case "/TASKS/":
+switch (substr($path, strlen(BASE_URL))) {
+    case "/user/inscription":
+        $userController->register();
+        break;
+    case "/":
         $homeController->home();
         break;
-    case "/TASKS/category/all":
+    case "/category/all":
         $categoryController->showAllCategories();
         break;
-    case "/TASKS/connexion":
+    case "/connexion":
         echo "Connexion";
         break;
-    case "/TASKS/category/add":
+    case "/category/add":
         $categoryController->addCategory();
         break;
-    case "/TASKS/category/delete":
+    case "/category/delete":
         $categoryController->removeCategory();
+        break;
+    case "/user/connexion":
         break;
     default : 
         echo "404";

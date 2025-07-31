@@ -94,11 +94,11 @@ class Category
     }
 
     //Methode pour supprimer une catégorie
-    public function deleteCategory()
+    public function deleteCategory(int $id)
     {
         try 
         {
-            $id = $this->idCategory;
+            // $id = $this->idCategory;
             $request = "DELETE FROM category WHERE id_category = ?";
             $req = $this->bdd->prepare($request);
             $req->bindParam(1, $id, \PDO::PARAM_INT);
